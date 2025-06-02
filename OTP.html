@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="OTP.css">
+</head>
+<body bgcolor="#43ff91">
+    <div id="otpMessage" name="otpMessage"></div>
+
+    <div class="contaner">
+      <div class="text">
+      <h1 class="text1" >OTP</h1>
+      <h2 class="text2">Verification Code</h2>
+      <h3 class="text3">We have send a verification code to yuor mobile</h3>
+       <h3 id="text4">  number</h3>
+      </div>
+      <div class="numberBox">
+        <input id="input1" type="text" minlength="10" maxlength="10"  placeholder="Mobile Number"/>
+        <button onclick="sendOTP()" id="btn" name="btn">OTP_Send</button>
+      </div>
+
+      <div class="otpBox">
+        <form autocomplete="off">
+        <input type="text" id="otp1"  name="otp1" class="setBox" maxlength="1" />
+        <input type="text" id="otp2" name="otp2" class="setBox" maxlength="1"/>
+        <input type="text" id="otp3" name="otp3" class="setBox" maxlength="1"/>
+        <input type="text" id="otp4" name="otp4" class="setBox" maxlength="1"/>
+        </form>
+          <div class="s_bitton">
+          <button id="ss" onclick="verifyOTP()">verify</button>
+        </div>
+      </div>
+    </div>
+    
+    </body>
+<script>
+  var generatedOTP;
+
+     function otpJan(length){
+   var otp ="";
+     for( var i = 0 ; i<length ; i++){
+        otp += Math.floor(Math.random()*10);
+     }
+        return otp;
+    }
+
+    function sendOTP(){
+      var mobileNumber = input1.value;
+        if (mobileNumber == "") {
+            alert("Please enter your mobile number before sending the OTP.");
+            return;
+        }
+
+        else if(mobileNumber.length <10)
+        {
+          alert("Mobile number must be exactly 10 digits.");
+              return;
+        }
+     
+        input1.value="";
+        
+    var a = otpJan(4);
+
+    setTimeout(function(){     
+    otpMessage.innerHTML="OTP has been send  by <br> Aditya Maurya==>"+" "+"("+a+")";
+    otpMessage.setAttribute("style",`
+    height:70px;
+    width:300px;
+    border-radius:10px;
+    margin-left: 180px;
+    text-align: center;
+    font-size:25px;
+    box-shadow: 0px 0px 20px blue;
+    background:white;
+    
+    `)
+
+    },3000)
+
+   if(btn.innerHTML == "OTP_Send"){
+        
+       btn.innerHTML= "Successful";
+       btn.style.background= "green";
+  
+   }
+
+   else{
+    btn.innerHTML= "OTP_Send";
+    btn.style.background= "red";
+   }     
+}
+
+function verifyOTP() {
+        var otp = otp1.value + otp2.value + otp3.value + otp4.value;
+        if(otp== ""){
+  
+        }
+       else if (otp == generatedOTP) {
+          alert("Incorrect OTP. Please try again");
+        } else {
+          alert("OTP verification successful!");
+        }
+        otp.value="";
+   
+
+         }
+    
+
+  </script>
+</html>
