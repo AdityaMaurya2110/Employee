@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo  Editing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="e.css">
+</head>
+<body>
+   <div class="contaner">
+    <div class="set_image">
+        <div class="con_url">
+    
+        <input type="text" placeholder="Enter Image URL" id="btn" name="btn" class="url"
+         style="height: 33px;"> <br/>
+        
+        <img src="a7.jpg" height="120px" width="150px"  onclick="change(this)" class="disImage1"><br/>
+        <img src="a3.jpg" height="120px" width="150px"  onclick="change(this)" class="disImage1"><br/>
+        <img src="adi.jpg" height="120px" width="150px"  onclick="change(this)" class="disImage1"><br/>
+        <img src="a5.jpg" height="120px" width="150px"  onclick="change(this)" class="disImage1"><br/>
+        <img src="a8.jpg" height="120px" width="150px"  onclick="change(this)" class="disImage1">
+    </div>
+    </div>
+    <div class="dis">
+    <img src="a7.jpg" class="disImage" id="dis" name="dis">
+
+</div>
+   <div class="editing_box">
+
+    <div class="r_range">
+<font size=7px " style="font-size: 35px; display: flex;">
+    Grayscale:<input type="range" min="0" max="500px" value="0" id="gra" name="gra" onchange="blurImage(this)"></font><br/>
+<font size=7px " style="font-size: 35px; display: flex;">
+    Constrast:<input type="range" min="0" max="100px" value="100" id="con" name="con" onchange="blurImage()"></font><br/>
+<font size=7px " style="font-size: 35px; display: flex;">
+    Opacity:<input type="range" min="0" max="500px" value="100" id="opa" name="opa" onchange="blurImage(this)"></font><br/>
+<font size=7px " style="font-size: 35px; display: flex;">
+    Sepia:<input type="range" min="0" max="500px" value="0" id="sep" name="sep" onchange="blurImage(this)"></font><br/>
+<font size=7px " style="font-size: 35px; display: flex;">
+    Saturate:<input type="range" min="0" max="500px" value="100" id="sat" name="sat" onchange="blurImage(this)"></font><br/>
+<font size=7px " style="font-size: 35px; display: flex;">
+    Blur:<input type="range" min="0" max="30px" value="0" id="blu" name="blu" onchange="blurImage(this)"></font><br/>
+<font size=7px " style="font-size: 35px; display: flex;">
+    Brighness:<input type="range" min="0" max="100px" value="100" id="bri" name="bri" onchange="blurImage(this)"></font><br/>
+   
+    <font size=7px " style="font-size: 35px; display: flex;">
+Rotate:  <button  onclick="R_Image(this)" id="btn2" name="btn2">R</button></font>
+</div>
+   </div>
+   <div class="sarch">
+    <i class="fa-solid fa-magnifying-glass" style=" background-color:whitesmoke;
+    height: 35px; width: 35px;font-size: 25px; text-align: center;" onclick="sendImage()"></i>
+    </div>
+</div>
+    </body>
+    <script>
+        function change(t1){
+         //   dis.src= t1.src;  
+        }
+ function sendImage(){
+    dis.setAttribute("src",btn.value);
+ }
+
+   function  blurImage(){
+            dis.setAttribute("style",`filter:hue-rotate(${gra.value}deg)
+                                      brightness(${bri.value}%)
+                                       contrast(${con.value}%)
+                                       opacity(${opa.value}%)
+                                         sepia(${sep.value}%)
+                                         saturate(${sat.value}%)  
+                                      blur(${blu.value}px);
+                                    `);
+        }
+ function R_Image(){
+     dis.setAttribute("style",`transform:rotate(${btn2.value=+btn2.value+90}deg`);
+ 
+    }
+              
+       
+    </script>
+   </html>
